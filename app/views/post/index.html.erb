@@ -1,3 +1,23 @@
-<% @boards.each do |board| %>
-    <h1><%= board.title %></h1>
-<% end %>
+
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">게시물 번호</th>
+      <th scope="col">제목</th>
+      <th scope="col" style="color: red;">삭제</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @boards.each do |board| %>
+        <tr>
+          <th scope="row"><%= board.id%></th>
+          <td><a href="/show/<%= board.id%>" style = "color: black; font-weight: bold; text-decoration: none"><%= board.title %></a></td>
+          <td><a href="/destroy/<%= board.id%>" style = "color: red; text-decoration: none">삭제</a></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

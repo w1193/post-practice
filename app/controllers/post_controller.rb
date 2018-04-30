@@ -3,7 +3,8 @@ class PostController < ApplicationController
   
   
   def index
-    @boards = Board.all
+    @boards = Board.all.reverse
+    @id = params[:id]
   end
   
   def new
@@ -18,5 +19,16 @@ class PostController < ApplicationController
     @board.contents = @contents
     @board.save
   end
-
+  
+  def show
+    @board = Board.find(params[:id])
+    @title = @board.title
+    @contents = @board.contents
+  end
+  
+  def destroy
+    @board = Board.destroy(params[:id])
+    redirect_to '/'
+  end
+  
 end
